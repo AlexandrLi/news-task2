@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+                 version="2.0">
+
+    <sequence-generator name="SEQ" sequence-name="NEWS_SEQ" allocation-size="1"/>
+    <mapped-superclass class="com.epam.ali.task2.model.BaseEntity">
+        <attributes>
+            <id name="id">
+                <column name="NEWS_ID"/>
+                <generated-value strategy="SEQUENCE" generator="SEQ"/>
+            </id>
+        </attributes>
+    </mapped-superclass>
+    <entity class="com.epam.ali.task2.model.News" name="News" access="FIELD">
+        <table name="NEWS"/>
+        <attributes>
+            <basic name="title">
+                <column name="NUMBER_TITLE" length="100"/>
+            </basic>
+            <basic name="date">
+                <column name="NEWS_DATE"/>
+                <temporal>DATE</temporal>
+            </basic>
+            <basic name="brief">
+                <column name="NEWS_BRIEF" length="500"/>
+            </basic>
+            <basic name="content">
+                <column name="NEWS_CONTENT" length="2048"/>
+            </basic>
+        </attributes>
+    </entity>
+</entity-mappings>
