@@ -7,6 +7,7 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.DispatchAction;
+import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,7 +20,11 @@ public class NewsAction extends DispatchAction {
     private static final String EDIT = "edit";
     private static final String DELETE = "delete";
     private static final String SAVE = "save";
-    private NewsService newsService = new NewsService();
+    private NewsService newsService;
+
+    public NewsAction() {
+        this.newsService = new FileSystemXmlApplicationContext("src/main/webapp/WEB-INF/context.xml").getBean("newsService", NewsService.class);
+    }
 
     public ActionForward list(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
             throws Exception {

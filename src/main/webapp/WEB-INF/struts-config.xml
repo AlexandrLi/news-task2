@@ -26,9 +26,11 @@
             <forward name="delete" path="/news.do?method=list" redirect="true"/>
         </action>
     </action-mappings>
-
     <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
     <message-resources parameter="messages"/>
+    <plug-in className="org.springframework.web.struts.ContextLoaderPlugIn">
+        <set-property property="contextConfigLocation" value="/WEB-INF/context.xml"/>
+    </plug-in>
     <plug-in className="org.apache.struts.tiles.TilesPlugin">
         <set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml"/>
     </plug-in>
